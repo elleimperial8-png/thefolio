@@ -22,10 +22,13 @@ connectDB();
 // Allow React (port 3000) to call this server
 /*app.use(cors({ origin: 'http://localhost:3000', credentials: true }));*/
 
-app.use(cors({ 
+/*app.use(cors({ 
   origin: ['http://localhost:3000', 'https://thefolio-live.vercel.app'], 
   credentials: true 
-}));
+})); */
+
+const allowedOrigins = ['http://localhost:3000', 'https://thefolio-live.vercel.app'];
+app.use(cors({ origin: allowedOrigins, credentials: true }));
 
 // Parse incoming JSON request bodies
 app.use(express.json());
